@@ -10,7 +10,8 @@
         "outputPath": "dist/apps/nestapp",
         "main": "apps/nestapp/src/main.ts",
         "tsConfig": "apps/nestapp/tsconfig.app.json",
-        "assets": ["apps/nestapp/src/assets"]
+        "assets": ["apps/nestapp/src/assets"],
+        "generatePackageJson": true
       },
       "configurations": {
         "production": {
@@ -45,6 +46,12 @@
       "options": {
         "jestConfig": "apps/nestapp/jest.config.js",
         "passWithNoTests": true
+      }
+    },
+    "docker": {
+      "executor": "@nx-tools/nx-docker:build",
+      "options": {
+        "push": false
       }
     }
   },
