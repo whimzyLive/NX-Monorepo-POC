@@ -33,6 +33,13 @@
         "buildTarget": "apis-nest-app:build"
       }
     },
+    "dockerize": {
+      "executor": "@nx-tools/nx-docker:build",
+      "options": {
+        "push": false,
+        "tags": ["api:latest", "api:v1"]
+      }
+    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
@@ -46,12 +53,6 @@
       "options": {
         "jestConfig": "apps/apis/nest-app/jest.config.js",
         "passWithNoTests": true
-      }
-    },
-    "docker": {
-      "executor": "@nx-tools/nx-docker:build",
-      "options": {
-        "push": false
       }
     }
   },
