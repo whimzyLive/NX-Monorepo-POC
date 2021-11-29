@@ -45,5 +45,5 @@
       "style": "scss"
     }
   },
-  "defaultProject": "angular-app"
+  "defaultProject": "clients-angular-app"
 }

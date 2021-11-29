@@ -1,0 +1,31 @@
+{
+  "root": "apps/infra/cdk-app",
+  "projectType": "application",
+  "sourceRoot": "apps/infra/cdk-app/src",
+  "targets": {
+    "deploy": {
+      "executor": "@codebrew/nx-aws-cdk:deploy",
+      "options": {}
+    },
+    "destroy": {
+      "executor": "@codebrew/nx-aws-cdk:destroy",
+      "options": {}
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/infra/cdk-app/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/infra/cdk-app"],
+      "options": {
+        "jestConfig": "apps/infra/cdk-app/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

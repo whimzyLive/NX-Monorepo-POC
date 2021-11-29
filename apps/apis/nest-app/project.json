@@ -1,0 +1,59 @@
+{
+  "root": "apps/apis/nest-app",
+  "sourceRoot": "apps/apis/nest-app/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/apis/nest-app",
+        "main": "apps/apis/nest-app/src/main.ts",
+        "tsConfig": "apps/apis/nest-app/tsconfig.app.json",
+        "assets": ["apps/apis/nest-app/src/assets"],
+        "generatePackageJson": true
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/apis/nest-app/src/environments/environment.ts",
+              "with": "apps/apis/nest-app/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:execute",
+      "options": {
+        "buildTarget": "apis-nest-app:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/apis/nest-app/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/apis/nest-app"],
+      "options": {
+        "jestConfig": "apps/apis/nest-app/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "docker": {
+      "executor": "@nx-tools/nx-docker:build",
+      "options": {
+        "push": false
+      }
+    }
+  },
+  "tags": []
+}

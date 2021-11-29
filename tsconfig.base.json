@@ -14,7 +14,15 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@poc-nx-workspace/api/hello/data-access": [
+        "libs/api/hello/data-access/src/index.ts"
+      ],
+      "@poc-nx-workspace/client-hello-ui": [
+        "libs/client/hello/ui/src/index.ts"
+      ],
+      "@poc-nx-workspace/shared/util": ["libs/shared/util/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
